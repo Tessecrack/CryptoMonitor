@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Common\CryptoMonitor.Domain\CryptoMonitor.Domain.csproj" />
+    <ProjectReference Include="..\CryptoMonitor.Interfaces.Base\CryptoMonitor.Interfaces.Base.csproj" />
+  </ItemGroup>
+
 </Project>

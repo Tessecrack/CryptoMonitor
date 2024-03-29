@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CryptoMonitor.DAL\CryptoMonitor.DAL.csproj" />
+  </ItemGroup>
+
 </Project>
