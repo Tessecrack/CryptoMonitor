@@ -4,31 +4,29 @@ namespace CryptoMonitor.Interfaces.Base.Repositories
 {
     public interface IRepository<T> where T : IEntity
     {
-        Task<bool> ExistId(int id);
+        Task<bool> ExistIdAsync(int id, CancellationToken cancel = default);
 
-        Task<bool> Exist(T item);
+        Task<bool> ExistAsync(T item, CancellationToken cancel = default);
 
-        Task<int> GetCount();
+        Task<int> GetCountAsync(CancellationToken cancel = default);
        
-        Task<IEnumerable<T>> GetAllAsync();
+        Task<IEnumerable<T>> GetAllAsync(CancellationToken cancel = default);
 
-        Task<IEnumerable<T>> Get(int skip, int count);
+        Task<IEnumerable<T>> GetAsync(int skip, int count, CancellationToken cancel = default);
 
-        Task<IPage<T>> GetPage(int pageIndex,  int pageSize);
+        Task<IPage<T>> GetPageAsync(int pageIndex,  int pageSize, CancellationToken cancel = default);
 
-        //async Task<T> GetById(int id) => (await GetAllAsync()).FirstOrDefault(item => item.Id == id);
+        //async Task<T> GetById(int id, CancellationToken cancel = default) => (await GetAllAsync()).FirstOrDefault(item => item.Id == id);
 
-        Task<T> GetById(int id);
+        Task<T> GetByIdAsync(int id, CancellationToken cancel = default);
 
-        Task<T> Add(T item);
+        Task<T> AddAsync(T item, CancellationToken cancel = default);
 
-        Task<T> Update(T item);
+        Task<T> UpdateAsync(T item, CancellationToken cancel = default);
 
-        Task<T> Delete(T item);
+        Task<T> DeleteAsync(T item, CancellationToken cancel = default);
 
-        Task<T> DeleteById(int id);
-
-
+        Task<T> DeleteByIdAsync(int id, CancellationToken cancel = default);
     }
 
     public interface IPage<T>
