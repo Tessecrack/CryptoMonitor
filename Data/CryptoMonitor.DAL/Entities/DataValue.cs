@@ -1,7 +1,9 @@
 ﻿using CryptoMonitor.DAL.Entities.Base;
+using Microsoft.EntityFrameworkCore;
 
 namespace CryptoMonitor.DAL.Entities
 {
+    [Index(nameof(Time))]
     public class DataValue : Entity
     {
         public DateTimeOffset Time { get; set; } = DateTimeOffset.Now;
