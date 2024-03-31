@@ -1,4 +1,5 @@
-﻿using CryptoMonitor.DAL.Context;
+﻿using CryptoMonitor.API.Data;
+using CryptoMonitor.DAL.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -14,6 +15,7 @@ namespace CryptoMonitor.API
                         Configuration.GetConnectionString("Data"),
                         o => o.MigrationsAssembly("CryptoMonitor.DAL.SqlServer")));
 
+            services.AddTransient<DataDBInitializer>();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -21,8 +23,10 @@ namespace CryptoMonitor.API
             });
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, DataDBInitializer dbInit)
         {
+            dbInit.Initialize();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
