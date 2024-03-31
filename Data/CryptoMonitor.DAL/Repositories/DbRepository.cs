@@ -167,15 +167,16 @@ namespace CryptoMonitor.DAL.Repositories
 
             var query = Items;
             var totalCount = await query.CountAsync(cancel).ConfigureAwait(false);
-
             if (totalCount == 0)
                 return new Page(Enumerable.Empty<T>(), 0, pageIndex, pageSize);
 
-            if (pageIndex > 0)
+            if (query is not IOrderedQueryable<T>)
             {
-                query.Skip(pageIndex * pageSize);
+                query = query.OrderBy(item => item.Id);
             }
 
+            if (pageIndex > 0)
+                query = query.Skip(pageIndex * pageSize);
             query = query.Take(pageSize);
 
             var items = await query.ToArrayAsync(cancel).ConfigureAwait(false);

@@ -43,5 +43,15 @@ namespace CryptoMonitor.API.Controllers
         {
             return Ok(await _repository.GetAsync(skip, count));
         }
+
+        [HttpGet("page/{pageIndex:int}/{pageSize:int}")]
+        [HttpGet("page/[[{pageIndex:int}/{pageSize:int}]]")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<ActionResult<IPage<DataSource>>> GetPageAsync(int pageIndex, int pageSize)
+        {
+            var result = await _repository.GetPageAsync(pageIndex, pageSize);
+            return result.Items.Any() ? Ok(result) : NotFound(result);
+        }
     }
 }
