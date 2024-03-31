@@ -109,7 +109,11 @@ namespace CryptoMonitor.DAL.Repositories
 
             if (count <= 0) return Enumerable.Empty<T>();
 
-            var query = Items;
+            IQueryable<T> query = Items switch
+            {
+                IOrderedQueryable<T> orderedQuery => orderedQuery,
+                { } q => q.OrderBy(i => i.Id),
+            };
             if (skip > 0) query = query.Skip(skip);
 
             return await query.Take(count).ToArrayAsync(cancel).ConfigureAwait(false);
