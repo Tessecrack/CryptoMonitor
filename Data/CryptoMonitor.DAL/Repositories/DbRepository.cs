@@ -13,6 +13,8 @@ namespace CryptoMonitor.DAL.Repositories
 
         protected virtual IQueryable<T> Items => Set;
 
+        public bool AutoSaveChanges { get; set; }
+
         public DbRepository(DataDB db)
         {
             this._db = db;
@@ -26,7 +28,12 @@ namespace CryptoMonitor.DAL.Repositories
             //_db.Entry(item).State = EntityState.Added;
 
             await _db.AddAsync(item, cancel).ConfigureAwait(false);
-            await _db.SaveChangesAsync(cancel).ConfigureAwait(false);
+            //await _db.SaveChangesAsync(cancel).ConfigureAwait(false);
+
+            if (AutoSaveChanges)
+            {
+                await SaveChangesAsync(cancel).ConfigureAwait(false);
+            }
 
             return item;
         }
@@ -39,7 +46,12 @@ namespace CryptoMonitor.DAL.Repositories
             //Set.Update(item);
 
             _db.Update(item);
-            await _db.SaveChangesAsync(cancel).ConfigureAwait(false);
+            //await _db.SaveChangesAsync(cancel).ConfigureAwait(false);
+
+            if (AutoSaveChanges)
+            {
+                await SaveChangesAsync(cancel).ConfigureAwait(false);
+            }
 
             return item;
         }
@@ -56,7 +68,11 @@ namespace CryptoMonitor.DAL.Repositories
             //Set.Remove(item);
 
             _db.Remove(item);
-            await _db.SaveChangesAsync(cancel).ConfigureAwait(false);
+            //await _db.SaveChangesAsync(cancel).ConfigureAwait(false);
+            if (AutoSaveChanges)
+            {
+                await SaveChangesAsync(cancel).ConfigureAwait(false);
+            }
 
             return item;
         }
@@ -165,6 +181,11 @@ namespace CryptoMonitor.DAL.Repositories
             var items = await query.ToArrayAsync(cancel).ConfigureAwait(false);
 
             return new Page(items, totalCount, pageIndex, pageSize);
+        }
+
+        public async Task<int> SaveChangesAsync(CancellationToken cancel = default)
+        {
+            return await _db.SaveChangesAsync(cancel).ConfigureAwait(false);
         }
     }
 }

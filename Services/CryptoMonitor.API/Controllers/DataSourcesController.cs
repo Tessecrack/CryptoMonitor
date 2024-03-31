@@ -17,9 +17,31 @@ namespace CryptoMonitor.API.Controllers
 
         [HttpGet("count")]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(int))]
-        public async Task<IActionResult> GetItemsCount()
+        public async Task<IActionResult> GetItemsCountAsync()
         {
             return Ok(await _repository.GetCountAsync());
+        }
+
+        [HttpGet("exist/id/{id:int}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(bool))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(bool))]
+        public async Task<IActionResult> ExistIdAsync(int id)
+        {
+            return await _repository.ExistIdAsync(id) ? Ok(true) : NotFound(false);
+        }
+
+        [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<IActionResult> GetAllAsync()
+        {
+            return Ok(await _repository.GetAllAsync());
+        }
+
+        [HttpGet("items[[{skip:int}:{count:int}]]")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<IEnumerable<DataSource>>> GetAsync(int skip, int count)
+        {
+            return Ok(await _repository.GetAsync(skip, count));
         }
     }
 }
