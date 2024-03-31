@@ -16,6 +16,7 @@ namespace CryptoMonitor.API.Controllers
         }
 
         [HttpGet("count")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(int))]
         public async Task<IActionResult> GetItemsCount()
         {
             return Ok(await _repository.GetCountAsync());
