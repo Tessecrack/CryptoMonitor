@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CryptoMonitor.DAL.SqlServer.Migrations
 {
     [DbContext(typeof(DataDB))]
-    [Migration("20240329202044_Init")]
-    partial class Init
+    [Migration("20240331172707_DataSourceNameIndex")]
+    partial class DataSourceNameIndex
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -39,9 +39,12 @@ namespace CryptoMonitor.DAL.SqlServer.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("Sources");
                 });
