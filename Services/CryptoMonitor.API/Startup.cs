@@ -1,5 +1,8 @@
 ﻿using CryptoMonitor.API.Data;
 using CryptoMonitor.DAL.Context;
+using CryptoMonitor.DAL.Entities;
+using CryptoMonitor.DAL.Repositories;
+using CryptoMonitor.Interfaces.Base.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -16,6 +19,13 @@ namespace CryptoMonitor.API
                         o => o.MigrationsAssembly("CryptoMonitor.DAL.SqlServer")));
 
             services.AddTransient<DataDBInitializer>();
+
+            //services.AddScoped<IRepository<DataSource>, DbRepository<DataSource>>();
+            //services.AddScoped<IRepository<DataValue>, DbRepository<DataValue>>();
+
+            services.AddScoped(typeof(IRepository<>), typeof(DbRepository<>));
+            services.AddScoped(typeof(INamedRepository<>), typeof(DbNamedRepository<>));
+
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
