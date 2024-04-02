@@ -30,6 +30,15 @@ namespace CryptoMonitor.API.Controllers
             return await _repository.ExistIdAsync(id) ? Ok(true) : NotFound(false);
         }
 
+        [HttpGet("exist")]
+        [HttpPost("exist")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(bool))]
+        [ProducesResponseType(StatusCodes.Status404NotFound, Type = typeof(bool))]
+        public async Task<IActionResult> ExistAsync(DataSource item)
+        {
+            return await _repository.ExistAsync(item) ? Ok(true) : NotFound(false);
+        }
+
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public async Task<IActionResult> GetAllAsync()
@@ -52,6 +61,70 @@ namespace CryptoMonitor.API.Controllers
         {
             var result = await _repository.GetPageAsync(pageIndex, pageSize);
             return result.Items.Any() ? Ok(result) : NotFound(result);
+        }
+
+        [HttpGet("{id:int}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetByIdAsync(int id)
+            => await _repository.GetByIdAsync(id) is { } item ? Ok(item) : NotFound();
+
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        public async Task<IActionResult> AddAsync(DataSource item)
+        {
+            var result =await _repository.AddAsync(item);
+
+            return CreatedAtAction(nameof(GetByIdAsync), new { id = result.Id });
+        }
+
+        [HttpPut]
+        [ProducesResponseType(StatusCodes.Status202Accepted)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> UpdateAsync(DataSource item)
+        {
+            if (await  _repository.UpdateAsync(item) is { } result)
+            {
+                return AcceptedAtAction(nameof(GetByIdAsync), new { id = result.Id });
+            }
+            return NotFound();
+            /*
+            return await _repository.UpdateAsync(item) is { } result
+                ? AcceptedAtAction(nameof(GetByIdAsync), new { id = result.Id })
+                : NotFound();
+            */
+            /*
+            var result = _repository.UpdateAsync(item);
+            if (result is null)
+            {
+                return NotFound();
+            }
+            return AcceptedAtAction(nameof(GetByIdAsync), new { id = result.Id });
+            */
+        }
+
+        [HttpDelete]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> DeleteAsync(DataSource item)
+        {
+            if (await _repository.DeleteAsync(item) is { } result)
+            {
+                return Ok(result);
+            }
+            return NotFound(item);
+        }
+
+        [HttpDelete("{id:int}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> DeleteByIdAsync(int id)
+        {
+            if (await _repository.DeleteByIdAsync(id) is not { } result)
+            {
+                return NotFound(id);
+            }
+            return Ok(result);
         }
     }
 }
