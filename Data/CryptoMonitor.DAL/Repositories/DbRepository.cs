@@ -13,7 +13,7 @@ namespace CryptoMonitor.DAL.Repositories
 
         protected virtual IQueryable<T> Items => Set;
 
-        public bool AutoSaveChanges { get; set; }
+        public bool AutoSaveChanges { get; set; } = true;
 
         public DbRepository(DataDB db)
         {
@@ -157,7 +157,10 @@ namespace CryptoMonitor.DAL.Repositories
                 .ConfigureAwait(false);
         }
 
-        protected record Page(IEnumerable<T> Items, int TotalCount, int PageIndex, int PageSize) : IPage<T>;
+        protected record Page(IEnumerable<T> Items, int TotalCount, int PageIndex, int PageSize) : IPage<T>
+        {
+            public int TotalPagesCount => (int)Math.Ceiling((double)TotalCount / (double)PageSize);
+        }
 
 
         public async Task<IPage<T>> GetPageAsync(int pageIndex, int pageSize, CancellationToken cancel = default)
