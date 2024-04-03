@@ -105,7 +105,7 @@ namespace CryptoMonitor.WebAPIClients.Repositories
 
         public async Task<IPage<T>> GetPageAsync(int pageIndex, int pageSize, CancellationToken cancel = default)
         {
-            var response = await _client.GetAsync($"page[{pageIndex}/{pageSize}]", cancel).ConfigureAwait(false);
+            var response = await _client.GetAsync($"page/{pageIndex}/{pageSize}", cancel).ConfigureAwait(false);
 
             if (response.StatusCode == HttpStatusCode.NotFound)
             {
@@ -134,6 +134,8 @@ namespace CryptoMonitor.WebAPIClients.Repositories
             public int PageIndex { get; init; }
 
             public int PageSize { get; init; }
+
+            public int TotalPagesCount => (int)Math.Ceiling((double)TotalCount / (double)PageSize);
         }
 
         public async Task<T> UpdateAsync(T item, CancellationToken cancel = default)

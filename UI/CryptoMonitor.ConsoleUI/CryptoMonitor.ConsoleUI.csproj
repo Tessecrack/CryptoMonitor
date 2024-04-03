@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Data\CryptoMonitor.DAL\CryptoMonitor.DAL.csproj" />
     <ProjectReference Include="..\..\Services\CryptoMonitor.WebAPIClients\CryptoMonitor.WebAPIClients.csproj" />
   </ItemGroup>
 
