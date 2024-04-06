@@ -4,6 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <OutputType>Exe</OutputType>
   </PropertyGroup>
 
   <ItemGroup>
@@ -12,6 +13,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+	<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="8.0.3" />
     <PackageReference Include="Serilog.AspNetCore" Version="8.0.1" />
     <PackageReference Include="Serilog.Extensions.Logging" Version="8.0.0" />
     <PackageReference Include="Serilog.Extensions.Logging.File" Version="3.0.0" />
@@ -21,6 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Common\CryptoMonitor.Domain\CryptoMonitor.Domain.csproj" />
     <ProjectReference Include="..\..\Data\CryptoMonitor.DAL.SqlServer\CryptoMonitor.DAL.SqlServer.csproj" />
+    <ProjectReference Include="..\..\UI\CryptoMonitor.BlazorUI\CryptoMonitor.BlazorUI.csproj" />
   </ItemGroup>
 
 </Project>

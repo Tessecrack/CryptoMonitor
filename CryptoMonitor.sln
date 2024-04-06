@@ -31,6 +31,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoMonitor.ConsoleUI", "
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoMonitor.WPF", "UI\CryptoMonitor.WPF\CryptoMonitor.WPF.csproj", "{E9215670-4EFF-4FBC-99BF-8BBFA37A31DB}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoMonitor.BlazorUI", "UI\CryptoMonitor.BlazorUI\CryptoMonitor.BlazorUI.csproj", "{DB7AC9C7-B101-4DDA-ACB3-25CC0F81E870}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -77,6 +79,10 @@ Global
 		{E9215670-4EFF-4FBC-99BF-8BBFA37A31DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E9215670-4EFF-4FBC-99BF-8BBFA37A31DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9215670-4EFF-4FBC-99BF-8BBFA37A31DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB7AC9C7-B101-4DDA-ACB3-25CC0F81E870}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB7AC9C7-B101-4DDA-ACB3-25CC0F81E870}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB7AC9C7-B101-4DDA-ACB3-25CC0F81E870}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB7AC9C7-B101-4DDA-ACB3-25CC0F81E870}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -92,6 +98,7 @@ Global
 		{7AB94965-EC64-4366-A97D-25FDB6562372} = {E26A9AA9-99E3-4620-8134-4160C0A10830}
 		{4B90DD5C-7198-4F23-B822-9A6DA1C0A619} = {AC7D7F21-79E6-40D8-ABDA-14DDB235A6C5}
 		{E9215670-4EFF-4FBC-99BF-8BBFA37A31DB} = {AC7D7F21-79E6-40D8-ABDA-14DDB235A6C5}
+		{DB7AC9C7-B101-4DDA-ACB3-25CC0F81E870} = {AC7D7F21-79E6-40D8-ABDA-14DDB235A6C5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {034B1D9F-D41D-4070-8D42-D2AE17134B84}
