@@ -15,7 +15,7 @@
         </Menu>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition MinWidth="20" Width="2*"/>
                 <ColumnDefinition Width="7*"/>
             </Grid.ColumnDefinitions>
             <ListBox ItemsSource="{Binding DataSources}">
@@ -31,6 +31,10 @@
                     </DataTemplate>
                 </ListBox.ItemTemplate>
             </ListBox>
+            <GridSplitter Grid.Column="0" VerticalAlignment="Stretch" 
+                          HorizontalAlignment="Right" 
+                          Panel.ZIndex="100"
+                          Width="3" Background="Transparent"/>
         </Grid>
     </DockPanel>
 </Window>
