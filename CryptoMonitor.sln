@@ -5,39 +5,36 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{794BD02D-2BAA-491A-B8BB-2B0EFEEE55AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoMonitor.Domain", "Common\CryptoMonitor.Domain\CryptoMonitor.Domain.csproj", "{5797FDD6-5B02-48EC-A998-06CD4AD2FB36}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoMonitor.Domain", "Common\CryptoMonitor.Domain\CryptoMonitor.Domain.csproj", "{5797FDD6-5B02-48EC-A998-06CD4AD2FB36}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoMonitor.Domain.Base", "Common\CryptoMonitor.Domain.Base\CryptoMonitor.Domain.Base.csproj", "{34A92625-5510-44E1-9694-281BE374591D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoMonitor.Domain.Base", "Common\CryptoMonitor.Domain.Base\CryptoMonitor.Domain.Base.csproj", "{34A92625-5510-44E1-9694-281BE374591D}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{53FA6552-B74A-45D5-B95B-A278EF4D8DAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoMonitor.DAL", "Data\CryptoMonitor.DAL\CryptoMonitor.DAL.csproj", "{0272C98C-9546-4A97-B355-6D0EE8B69C4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoMonitor.DAL", "Data\CryptoMonitor.DAL\CryptoMonitor.DAL.csproj", "{0272C98C-9546-4A97-B355-6D0EE8B69C4C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoMonitor.DAL.SqlServer", "Data\CryptoMonitor.DAL.SqlServer\CryptoMonitor.DAL.SqlServer.csproj", "{C95544FF-0EEB-448D-AB74-3C91EC3D63A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoMonitor.DAL.SqlServer", "Data\CryptoMonitor.DAL.SqlServer\CryptoMonitor.DAL.SqlServer.csproj", "{C95544FF-0EEB-448D-AB74-3C91EC3D63A2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{E26A9AA9-99E3-4620-8134-4160C0A10830}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoMonitor.API", "Services\CryptoMonitor.API\CryptoMonitor.API.csproj", "{F80193BB-082E-46B4-9AD1-14002ED00FAE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoMonitor.API", "Services\CryptoMonitor.API\CryptoMonitor.API.csproj", "{F80193BB-082E-46B4-9AD1-14002ED00FAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoMonitor.Interfaces", "Services\CryptoMonitor.Interfaces\CryptoMonitor.Interfaces.csproj", "{B29FE4EF-AA60-444F-A1F4-05E4A2867674}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoMonitor.Interfaces", "Services\CryptoMonitor.Interfaces\CryptoMonitor.Interfaces.csproj", "{B29FE4EF-AA60-444F-A1F4-05E4A2867674}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoMonitor.Interfaces.Base", "Services\CryptoMonitor.Interfaces.Base\CryptoMonitor.Interfaces.Base.csproj", "{4E077A56-2935-4793-A71F-1196272F6B89}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoMonitor.Interfaces.Base", "Services\CryptoMonitor.Interfaces.Base\CryptoMonitor.Interfaces.Base.csproj", "{4E077A56-2935-4793-A71F-1196272F6B89}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoMonitor.WebAPIClients", "Services\CryptoMonitor.WebAPIClients\CryptoMonitor.WebAPIClients.csproj", "{7AB94965-EC64-4366-A97D-25FDB6562372}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoMonitor.WebAPIClients", "Services\CryptoMonitor.WebAPIClients\CryptoMonitor.WebAPIClients.csproj", "{7AB94965-EC64-4366-A97D-25FDB6562372}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{AC7D7F21-79E6-40D8-ABDA-14DDB235A6C5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoMonitor.ConsoleUI", "UI\CryptoMonitor.ConsoleUI\CryptoMonitor.ConsoleUI.csproj", "{4B90DD5C-7198-4F23-B822-9A6DA1C0A619}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoMonitor.ConsoleUI", "UI\CryptoMonitor.ConsoleUI\CryptoMonitor.ConsoleUI.csproj", "{4B90DD5C-7198-4F23-B822-9A6DA1C0A619}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoMonitor.WPF", "UI\CryptoMonitor.WPF\CryptoMonitor.WPF.csproj", "{E9215670-4EFF-4FBC-99BF-8BBFA37A31DB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CryptoMonitor.WPF", "UI\CryptoMonitor.WPF\CryptoMonitor.WPF.csproj", "{E9215670-4EFF-4FBC-99BF-8BBFA37A31DB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{5797FDD6-5B02-48EC-A998-06CD4AD2FB36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -81,6 +78,9 @@ Global
 		{E9215670-4EFF-4FBC-99BF-8BBFA37A31DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E9215670-4EFF-4FBC-99BF-8BBFA37A31DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5797FDD6-5B02-48EC-A998-06CD4AD2FB36} = {794BD02D-2BAA-491A-B8BB-2B0EFEEE55AB}
 		{34A92625-5510-44E1-9694-281BE374591D} = {794BD02D-2BAA-491A-B8BB-2B0EFEEE55AB}
@@ -92,5 +92,8 @@ Global
 		{7AB94965-EC64-4366-A97D-25FDB6562372} = {E26A9AA9-99E3-4620-8134-4160C0A10830}
 		{4B90DD5C-7198-4F23-B822-9A6DA1C0A619} = {AC7D7F21-79E6-40D8-ABDA-14DDB235A6C5}
 		{E9215670-4EFF-4FBC-99BF-8BBFA37A31DB} = {AC7D7F21-79E6-40D8-ABDA-14DDB235A6C5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {034B1D9F-D41D-4070-8D42-D2AE17134B84}
 	EndGlobalSection
 EndGlobal
