@@ -60,9 +60,8 @@ namespace CryptoMonitor.ConsoleUI
             //        Name = $"Source - {DateTime.Now:HH-mm-ss}",
             //        Description = $"Edited source at {DateTime.Now}"
             //    });
-
-            var item = await dataSources.GetByIdAsync(14);
-            var deletedItem = await dataSources.DeleteAsync(item);
+            var item = await dataSources.GetByIdAsync(10);
+            
 
             var sources = await dataSources.GetAllAsync();
             foreach (var source in sources)

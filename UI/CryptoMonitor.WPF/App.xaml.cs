@@ -1,6 +1,10 @@
-﻿using CryptoMonitor.WPF.ViewModels;
+﻿using CryptoMonitor.DAL.Entities;
+using CryptoMonitor.Interfaces.Base.Repositories;
+using CryptoMonitor.WebAPIClients.Repositories;
+using CryptoMonitor.WPF.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Net.Http;
 using System.Windows;
 
 namespace CryptoMonitor.WPF;
@@ -28,6 +32,11 @@ public partial class App
     private static void ConfigureServices(HostBuilderContext context, IServiceCollection services)
     {
         services.AddScoped<MainWindowViewModel>();
+        services.AddHttpClient<IRepository<DataSource>, WebRepository<DataSource>>(
+            client =>
+            {
+                client.BaseAddress = new Uri($"{context.Configuration["WebAPI"]}/api/DataSources");
+            });
     }
 
     protected override async void OnStartup(StartupEventArgs e)
