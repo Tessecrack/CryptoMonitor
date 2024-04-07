@@ -31,6 +31,8 @@ namespace CryptoMonitor.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CryptoMonitor.API", Version = "v1" });
             });
+
+            services.AddAutoMapper(typeof(Startup));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, DataDBInitializer dbInit)
