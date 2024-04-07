@@ -1,0 +1,95 @@
+﻿@page "/"
+@using CryptoMonitor.Domain.Base
+@using CryptoMonitor.Interfaces.Base.Repositories
+
+@inject IRepository<DataSourceInfo> _repository;
+
+<h3>Data</h3>
+@* <button class="btn btn-primary" @onclick="async() => await UpdateSources()">Refresh</button> *@
+<button class="btn btn-primary" @onclick="OnRefreshButtonOnClick">Refresh</button>
+
+<hr/>
+
+<EditForm Model="_createdNewSourceModel" OnValidSubmit="OnSourceCreated">
+	<div class="row">
+		<div class="col-3">
+			<InputText id="new-datasource-name" @bind-Value="_createdNewSourceModel.Name"/>
+		</div>
+		<div class="col-9">
+			<InputText id="new-datasource-description" @bind-Value="_createdNewSourceModel.Description"/>
+		</div>
+	</div>
+	<button class="btn btn-primary" type="submit">Create</button>
+</EditForm>
+
+
+@if (_sources is { } sources)
+{
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Description</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			@foreach(var src in sources)
+			{
+				<tr>
+					<td>@src.Id</td>
+					<td>@src.Name</td>
+					<td>@src.Description</td>
+					<td>
+						<button class="btn btn-outline-danger" @onclick="() => OnRemove(src)">
+							<i class="fa fa-trash"></i>
+						</button>
+					</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+}
+else
+{
+	<p>Loading...</p>
+}
+
+@code{
+	private IList<DataSourceInfo> _sources;
+
+	private DataSourceInfo _createdNewSourceModel = new();
+
+	private async Task UpdateSources()
+	{
+		Console.WriteLine("Data request from server");
+		_sources = (await _repository.GetAllAsync()).ToList();
+		Console.WriteLine("Data request is done!");
+	}
+
+	protected override async Task OnInitializedAsync() => await UpdateSources();
+
+	private async Task OnRefreshButtonOnClick() => await UpdateSources();
+
+	private async Task OnRemove(DataSourceInfo source)
+	{
+		if (_sources is not { Count: > 0 })
+		{
+			return;
+		}
+		var removedItem = await _repository.DeleteAsync(source);
+		if (removedItem is not null)
+		{
+			_sources.Remove(source);
+		}
+	}
+
+	private async Task OnSourceCreated()
+	{
+		var createdSource = await _repository.AddAsync(_createdNewSourceModel);
+		if (createdSource is null) return;
+		_sources.Add(createdSource);
+		_createdNewSourceModel = new();
+	}
+}

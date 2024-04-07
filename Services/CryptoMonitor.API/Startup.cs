@@ -31,6 +31,8 @@ namespace CryptoMonitor.API
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CryptoMonitor.API", Version = "v1" });
             });
+
+            services.AddAutoMapper(typeof(Startup));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, DataDBInitializer dbInit)
@@ -40,16 +42,20 @@ namespace CryptoMonitor.API
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseWebAssemblyDebugging();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CryptoMonitor.API v1"));
+                //app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CryptoMonitor.API v1"));
             }
 
+            app.UseBlazorFrameworkFiles();
+            app.UseStaticFiles();
             //app.UseHttpsRedirection();
             app.UseRouting();
             app.UseAuthorization();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapFallbackToFile("index.html");
             });
         }
     }

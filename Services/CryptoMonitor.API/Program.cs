@@ -1,9 +1,9 @@
 using System.Threading.Tasks;
-using CryptoMonitor.API;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using Serilog;
 
-namespace WeatherAcquisition.API
+namespace CryptoMonitor.API
 {
     public class Program
     {
@@ -15,6 +15,7 @@ namespace WeatherAcquisition.API
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+               .UseSerilog((host, log) => log.ReadFrom.Configuration(host.Configuration))
                .ConfigureWebHostDefaults(host => host
                   .UseStartup<Startup>()
                )
