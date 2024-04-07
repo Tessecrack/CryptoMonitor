@@ -1,5 +1,44 @@
 ﻿@page "/"
+@using CryptoMonitor.Domain.Base
+@using CryptoMonitor.Interfaces.Base.Repositories
+
+@inject IRepository<DataSourceInfo> _repository;
 
 <PageTitle>Home</PageTitle>
 
-Welcome!
+@if (_sources is { } sources)
+{
+	<table class="table">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+				<th>Description</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			@foreach(var src in sources)
+			{
+				<tr>
+					<td>@src.Id</td>
+					<td>@src.Name</td>
+					<td>@src.Description</td>
+				</tr>
+			}
+		</tbody>
+	</table>
+}
+else
+{
+	<p>Loading...</p>
+}
+
+@code{
+	private IList<DataSourceInfo> _sources;
+
+	protected override async Task OnInitializedAsync()
+	{
+		_sources = (await _repository.GetAllAsync()).ToList();
+	}
+}
