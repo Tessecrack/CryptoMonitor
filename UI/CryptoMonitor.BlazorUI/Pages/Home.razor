@@ -6,6 +6,11 @@
 
 <PageTitle>Home</PageTitle>
 
+<h3>Data</h3>
+@* <button class="btn btn-primary" @onclick="async() => await UpdateSources()">Refresh</button> *@
+<button class="btn btn-primary" @onclick="RefreshButtonOnClick">Refresh</button>
+
+
 @if (_sources is { } sources)
 {
 	<table class="table">
@@ -37,8 +42,14 @@ else
 @code{
 	private IList<DataSourceInfo> _sources;
 
-	protected override async Task OnInitializedAsync()
+	private async Task UpdateSources()
 	{
+		Console.WriteLine("Data request from server");
 		_sources = (await _repository.GetAllAsync()).ToList();
+		Console.WriteLine("Data request is done!");
 	}
+
+	protected override async Task OnInitializedAsync() => await UpdateSources();
+
+	private async Task RefreshButtonOnClick() => await UpdateSources();
 }
