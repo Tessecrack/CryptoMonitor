@@ -58,12 +58,16 @@ else
 
 	private async Task RefreshButtonOnClick() => await UpdateSources();
 
-	private void Remove(DataSourceInfo source)
+	private async Task Remove(DataSourceInfo source)
 	{
 		if (_sources is not { Count: > 0 })
 		{
 			return;
 		}
-		_sources.Remove(source);
+		var removedItem = await _repository.DeleteAsync(source);
+		if (removedItem is not null)
+		{
+			_sources.Remove(source);
+		}
 	}
 }
